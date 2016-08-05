@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AForge.Imaging;
+using AForge.Imaging.Filters;
 
 namespace ConsoleApplication1
 {
@@ -79,7 +80,9 @@ namespace ConsoleApplication1
             /// <returns>Bitmap image</returns>
             private static Bitmap ChangePixelFormat(Bitmap inputImage, System.Drawing.Imaging.PixelFormat newFormat)
             {
-                return (inputImage.Clone(new Rectangle(0, 0, inputImage.Width, inputImage.Height), newFormat));
+                HistogramEqualization filter = new HistogramEqualization();
+                
+                return filter.Apply(inputImage.Clone(new Rectangle(0, 0, inputImage.Width, inputImage.Height), newFormat));
             }
         }
     

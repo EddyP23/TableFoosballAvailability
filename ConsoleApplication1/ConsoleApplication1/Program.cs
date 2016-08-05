@@ -19,18 +19,21 @@ namespace ConsoleApplication1
 
             string testImageOne = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
             string testImageTwo = AppDomain.CurrentDomain.BaseDirectory + "/Images/test1.jpg";
+            string testImageThree = AppDomain.CurrentDomain.BaseDirectory + "/Images/test2.jpg";
 
             // Comparison level is initially set to 0.95
             // Increment loop in steps of .01
-            for (var compareLevel = 0.5; compareLevel <= 1.00; compareLevel += 0.10)
+            for (var compareLevel = 0.8; compareLevel <= 1.00; compareLevel += 0.03)
             {
                 // Run the tests
                 var testTwo = ImageComparer.CompareImages(testImageOne, testImageTwo, compareLevel, dirpath, similarityThreshold);
-                
+                var testThree = ImageComparer.CompareImages(testImageOne, testImageThree, compareLevel, dirpath, similarityThreshold);
+
                 // Output the results
                 Console.WriteLine("Test images for similarities at compareLevel: {0}", compareLevel);
                 Console.WriteLine("Results for Image 1 compared to Image 2 - Expected: True : Actual {0}", testTwo);
-               
+                Console.WriteLine("Results for Image 1 compared to Image 3 - Expected: True : Actual {0}", testThree);
+
             }
 
             Console.WriteLine("End of comparison.");
