@@ -1,12 +1,10 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
 using AForge.Imaging;
 using AForge.Imaging.Filters;
 
 namespace DB.FreeFoosballInspector
 {
-
     public static class ImageComparer
     {
         // The file extension for the generated Bitmap files
@@ -28,7 +26,8 @@ namespace DB.FreeFoosballInspector
             var df = new ThresholdedDifference(90) {OverlayImage = overlayImage};
 
             var savedTemplate = SaveBitmapToFile(df.Apply(template), filepath, image, BitMapExtension);
-            var savedTempFile = SaveBitmapToFile(df.Apply(templFile), filepath, "C:\\temp\\temp"+ (_overrideTempFile?i.ToString():"")+ ".bmp", BitMapExtension);
+            var savedTempFile =
+                SaveBitmapToFile(df.Apply(templFile), filepath, Path.Combine(filepath, "temp" + (_overrideTempFile?i.ToString():"") + ".bmp"), BitMapExtension);
             i++;
 
             // Setup the AForge library
@@ -56,7 +55,7 @@ namespace DB.FreeFoosballInspector
         /// <returns>Bitmap image</returns>
         private static Bitmap SaveBitmapToFile(Bitmap image, string filepath, string name, string extension)
         {
-            var savePath = string.Concat(filepath, "\\", Path.GetFileNameWithoutExtension(name), extension);
+            var savePath = Path.Combine(filepath, Path.GetFileNameWithoutExtension(name)) + extension;
 
             image.Save(savePath, System.Drawing.Imaging.ImageFormat.Bmp);
 

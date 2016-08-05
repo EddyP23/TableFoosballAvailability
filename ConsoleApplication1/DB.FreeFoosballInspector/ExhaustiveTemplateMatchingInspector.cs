@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 namespace DB.FreeFoosballInspector
 {
@@ -54,9 +55,8 @@ namespace DB.FreeFoosballInspector
         
         private double GetSimilarity()
         {
-            string template = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
-
-            var dirPath = "C:\\temp";
+            var template = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
+            var dirPath = Path.GetTempPath();
 
             var im2 = BitmapHelper.CropImage(_image, new Rectangle(725, 497, 117, 81));
 
