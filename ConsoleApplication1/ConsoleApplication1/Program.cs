@@ -9,7 +9,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            var insp = new FreeFoosballInspector();
+            var insp = new FreeFoosballInspector<ExhaustiveTemplateMatchingInspector>();
             insp.TableStatusChangedEvent += (sender, eventArgs) =>
             {
                 if (((TableStatusChangedEventArgs) eventArgs).IsFree)
