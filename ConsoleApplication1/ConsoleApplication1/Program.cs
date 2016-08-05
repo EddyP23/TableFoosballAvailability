@@ -10,6 +10,9 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+<<<<<<< HEAD
+            //lala
+=======
             // Filepath to the image directory
             const string dirpath = @"C:\Temp\";
 
@@ -38,6 +41,7 @@ namespace ConsoleApplication1
 
             Console.WriteLine("End of comparison.");
             Console.ReadKey();
+>>>>>>> 9e1fc6d8da8389163b119f0622d4ef7cc270d871
         }
     }
 }
