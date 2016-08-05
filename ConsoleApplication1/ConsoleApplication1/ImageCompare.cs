@@ -56,18 +56,18 @@ namespace ConsoleApplication1
             return match;
         }
 
-        public static double GetSimilarity(string image, string targetImage, string filepath)
+        public static double GetSimilarity(string image, Bitmap targetImage, string filepath)
         {
             // Load images into bitmaps
             var imageOne = new Bitmap(image);
 
-            var imageTwo = new Bitmap(targetImage);
+            var imageTwo = targetImage;
 
             var newBitmap1 = ChangePixelFormat(new Bitmap(imageOne), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             var newBitmap2 = ChangePixelFormat(new Bitmap(imageTwo), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
             newBitmap1 = SaveBitmapToFile(newBitmap1, filepath, image, BitMapExtension);
-            newBitmap2 = SaveBitmapToFile(newBitmap2, filepath, targetImage, BitMapExtension);
+            newBitmap2 = SaveBitmapToFile(newBitmap2, filepath, "C:\\temp\\temp.bmp", BitMapExtension);
 
             // Setup the AForge library
             var tm = new ExhaustiveTemplateMatching(0);

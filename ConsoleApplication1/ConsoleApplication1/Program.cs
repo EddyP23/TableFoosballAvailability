@@ -23,9 +23,9 @@ namespace ConsoleApplication1
             while (true)
             {
                 var gotImage = BitmapHelper.FromUrl("http://10.32.244.12/record/current.jpg");
-                BitmapHelper.CropImage(gotImage, new Rectangle(725, 497, 117, 81)).Save(tempFilePath+i.ToString());
+                var im2 = BitmapHelper.CropImage(gotImage, new Rectangle(725, 497, 117, 81));
 
-                var similarity = ImageComparer.GetSimilarity(template, tempFilePath+i.ToString(), dirPath);
+                var similarity = ImageComparer.GetSimilarity(template, im2, dirPath);
                 Console.WriteLine($"[{i}] Similarity is {similarity}");
                 Thread.Sleep(1000);
                 i++;
