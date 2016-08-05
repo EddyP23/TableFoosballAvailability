@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using FreeFoosball.ViewModels;
+using Microsoft.Practices.Unity;
 
 namespace FreeFoosball
 {
@@ -7,5 +9,17 @@ namespace FreeFoosball
     /// </summary>
     public partial class App
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var container = new UnityContainer();
+
+            container.RegisterType<MainWindowViewModel>(new InjectionFactory(c => new MainWindowViewModel
+            {
+                Title = "Free Foosball!"
+            }));
+
+            container.Resolve<MainWindow>().ShowDialog();
+            container.Dispose();
+        }
     }
 }
