@@ -61,11 +61,20 @@ namespace FreeFoosball.Assets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry. It is not your time to leave your work..
+        /// </summary>
+        internal static string Bad {
+            get {
+                return ResourceManager.GetString("Bad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon available {
+        internal static System.Drawing.Icon foosball_available {
             get {
-                object obj = ResourceManager.GetObject("available", resourceCulture);
+                object obj = ResourceManager.GetObject("foosball_available", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -73,20 +82,19 @@ namespace FreeFoosball.Assets {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon busy {
+        internal static System.Drawing.Icon foosball_busy {
             get {
-                object obj = ResourceManager.GetObject("busy", resourceCulture);
+                object obj = ResourceManager.GetObject("foosball_busy", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized string similar to Quickly run!!! It is your chance now!.
         /// </summary>
-        internal static System.Drawing.Icon foosball {
+        internal static string Good {
             get {
-                object obj = ResourceManager.GetObject("foosball", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ResourceManager.GetString("Good", resourceCulture);
             }
         }
     }

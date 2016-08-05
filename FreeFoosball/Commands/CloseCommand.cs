@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Input;
-using FreeFoosball.ViewModels;
 
 namespace FreeFoosball.Commands
 {
@@ -22,7 +21,7 @@ namespace FreeFoosball.Commands
 
         public void Execute(object parameter)
         {
-            _onExecute();
+            _onExecute?.Invoke();
         }
     }
 }

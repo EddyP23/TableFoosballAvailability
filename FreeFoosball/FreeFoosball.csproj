@@ -139,15 +139,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\foosball.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\foosball.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\available.bmp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Assets\foosball_available.ico" />
+    <Resource Include="Assets\foosball_busy.ico" />
     <Content Include="Images\template.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -157,15 +150,8 @@
     <Content Include="Images\test2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\available.ico" />
-    <Content Include="Assets\busy.bmp">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="Assets\busy.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApplication1\DB.FreeFoosballInspector\DB.FreeFoosballInspector.csproj">
       <Project>{aabf280f-50b2-497b-9c8f-4c26b546e224}</Project>

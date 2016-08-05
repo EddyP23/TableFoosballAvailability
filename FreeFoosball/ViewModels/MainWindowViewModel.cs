@@ -6,16 +6,14 @@ using DB.FreeFoosballInspector;
 using FreeFoosball.Commands;
 using Prism.Mvvm;
 using System.Windows.Threading;
+using FreeFoosball.Assets;
 
 namespace FreeFoosball.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private const string Good = "Quickly run!!! It is your chance now!";
-        private const string Bad = "Sorry. It is not your time to leave your work.";
-
-        private string _text = Bad;
-        private ImageSource _imageSource = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/busy.ico"));
+        private string _text = Resources.Bad;
+        private ImageSource _imageSource = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
         private readonly FreeFoosballInspector<ExhaustiveTemplateMatchingInspector> _inspector = new FreeFoosballInspector<ExhaustiveTemplateMatchingInspector>();
 
         public MainWindowViewModel()
@@ -24,23 +22,23 @@ namespace FreeFoosball.ViewModels
             {
                 if (((TableStatusChangedEventArgs)eventArgs).IsFree)
                 {
-                    var bi = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/available.ico"));
+                    var bi = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_available.ico"));
                     bi.Freeze();
 
                     Dispatcher.CurrentDispatcher.Invoke(() =>
                     {
-                        Text = Good;
+                        Text = Resources.Good;
                         IconSource = bi;
                     });
                 }
                 else
                 {
-                    var bi = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/busy.ico"));
+                    var bi = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
                     bi.Freeze();
 
                     Dispatcher.CurrentDispatcher.Invoke(() =>
                     {
-                        Text = Bad;
+                        Text = Resources.Bad;
                         IconSource = bi;
                     });
                 }

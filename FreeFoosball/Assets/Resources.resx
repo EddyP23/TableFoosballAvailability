@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bad" xml:space="preserve">
+    <value>Sorry. It is not your time to leave your work.</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Quickly run!!! It is your chance now!</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="available" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>available.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="foosball_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>foosball_available.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="busy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>busy.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="foosball" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>foosball.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="foosball_busy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>foosball_busy.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
