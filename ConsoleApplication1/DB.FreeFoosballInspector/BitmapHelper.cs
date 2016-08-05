@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
+﻿using System.Drawing;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using AForge.Imaging.Filters;
 
-namespace ConsoleApplication1.Helpers
+namespace DB.FreeFoosballInspector
 {
     public static class BitmapHelper
     {

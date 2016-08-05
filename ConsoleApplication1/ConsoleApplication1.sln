@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{D37A89D7-0029-4709-A5FD-FF12C3B0D493}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeFoosball", "..\FreeFoosball\FreeFoosball.csproj", "{C1891B9F-DCF1-4CED-B6DF-F686D32B13C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.FreeFoosballInspector", "DB.FreeFoosballInspector\DB.FreeFoosballInspector.csproj", "{AABF280F-50B2-497B-9C8F-4C26B546E224}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C1891B9F-DCF1-4CED-B6DF-F686D32B13C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1891B9F-DCF1-4CED-B6DF-F686D32B13C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1891B9F-DCF1-4CED-B6DF-F686D32B13C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AABF280F-50B2-497B-9C8F-4C26B546E224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABF280F-50B2-497B-9C8F-4C26B546E224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABF280F-50B2-497B-9C8F-4C26B546E224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABF280F-50B2-497B-9C8F-4C26B546E224}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
