@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace FreeFoosball
+﻿namespace FreeFoosball
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
