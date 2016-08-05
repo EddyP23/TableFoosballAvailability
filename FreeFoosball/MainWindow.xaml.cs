@@ -1,5 +1,4 @@
-﻿using System;
-using FreeFoosball.ViewModels;
+﻿using FreeFoosball.ViewModels;
 
 namespace FreeFoosball
 {

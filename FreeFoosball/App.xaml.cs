@@ -13,10 +13,7 @@ namespace FreeFoosball
         {
             var container = new UnityContainer();
 
-            container.RegisterType<MainWindowViewModel>(new InjectionFactory(c => new MainWindowViewModel
-            {
-                Title = "Free Foosball!"
-            }));
+            container.RegisterType<MainWindowViewModel>();
 
             container.Resolve<MainWindow>().ShowDialog();
             container.Dispose();
