@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using ConsoleApplication1.Helpers;
 
 namespace ConsoleApplication1
 {
@@ -10,34 +13,28 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            // Filepath to the image directory
-            const string dirpath = @"C:\Temp\";
+            string tempFilePath = AppDomain.CurrentDomain.BaseDirectory + "/Images/temp.bmp";
 
-            // The threshold is the minimal acceptable similarity between template candidate. 
-            // Min (loose) is 0.0 Max (strict) is 1.0
-            const float similarityThreshold = 0.50f;
+            string template = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
+            
+            var dirPath = "C:\\temp";
 
-            string testImageOne = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
-            string testImageTwo = AppDomain.CurrentDomain.BaseDirectory + "/Images/test1.jpg";
-            string testImageThree = AppDomain.CurrentDomain.BaseDirectory + "/Images/test2.jpg";
-
-            // Comparison level is initially set to 0.95
-            // Increment loop in steps of .01
-            for (var compareLevel = 0.8; compareLevel <= 1.00; compareLevel += 0.03)
+            int i = 1;
+            while (true)
             {
-                // Run the tests
-                var testTwo = ImageComparer.CompareImages(testImageOne, testImageTwo, compareLevel, dirpath, similarityThreshold);
-                var testThree = ImageComparer.CompareImages(testImageOne, testImageThree, compareLevel, dirpath, similarityThreshold);
+                var gotImage = BitmapHelper.FromUrl("http://10.32.244.12/record/current.jpg");
+                BitmapHelper.CropImage(gotImage, new Rectangle(725, 497, 117, 81)).Save(tempFilePath+i.ToString());
 
-                // Output the results
-                Console.WriteLine("Test images for similarities at compareLevel: {0}", compareLevel);
-                Console.WriteLine("Results for Image 1 compared to Image 2 - Expected: True : Actual {0}", testTwo);
-                Console.WriteLine("Results for Image 1 compared to Image 3 - Expected: True : Actual {0}", testThree);
-
+                var similarity = ImageComparer.GetSimilarity(template, tempFilePath+i.ToString(), dirPath);
+                Console.WriteLine($"[{i}] Similarity is {similarity}");
+                Thread.Sleep(1000);
+                i++;
             }
+
 
             Console.WriteLine("End of comparison.");
             Console.ReadKey();
+            return;
         }
     }
 }
