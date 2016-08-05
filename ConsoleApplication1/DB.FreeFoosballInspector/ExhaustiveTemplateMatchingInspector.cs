@@ -6,7 +6,7 @@ namespace DB.FreeFoosballInspector
     public class ExhaustiveTemplateMatchingInspector: IFreeFoosballInspector
     {
         private bool _isPreviousFree = false;
-        private const double SimilarityThreshold = 0.90;
+        private const double SimilarityThreshold = 0.80;
         private double _lastSimilarity;
         private bool _isInitialEventSent = false;
         private Bitmap _image = null;

@@ -11,46 +11,8 @@ namespace DB.FreeFoosballInspector
     {
         // The file extension for the generated Bitmap files
         private const string BitMapExtension = ".bmp";
-
-        /// <summary>
-        /// Compares the images.
-        /// </summary>
-        /// <param name="image">The image.</param>
-        /// <param name="targetImage">The target image.</param>
-        /// <param name="compareLevel">The compare level.</param>
-        /// <param name="filepath">The filepath.</param>
-        /// <param name="similarityThreshold">The similarity threshold.</param>
-        /// <returns>Boolean result</returns>
-        public static Boolean CompareImages(string image, string targetImage, double compareLevel, string filepath, float similarityThreshold)
-        {
-            // Load images into bitmaps
-            var imageOne = new Bitmap(image);
-
-            var imageTwo = new Bitmap(targetImage);
-
-            var newBitmap1 = ChangePixelFormat(new Bitmap(imageOne), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            var newBitmap2 = ChangePixelFormat(new Bitmap(imageTwo), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-
-            newBitmap1 = SaveBitmapToFile(newBitmap1, filepath, image, BitMapExtension);
-            newBitmap2 = SaveBitmapToFile(newBitmap2, filepath, targetImage, BitMapExtension);
-
-            // Setup the AForge library
-            var tm = new ExhaustiveTemplateMatching(similarityThreshold);
-
-            // Process the images
-            var results = tm.ProcessImage(newBitmap1, newBitmap2);
-
-            // Compare the results, 0 indicates no match so return false
-            if (results.Length <= 0)
-            {
-                return false;
-            }
-
-            // Return true if similarity score is equal or greater than the comparison level
-            var match = results[0].Similarity >= compareLevel;
-
-            return match;
-        }
+        public static int i = 0;
+        private static bool _overrideTempFile = false;
 
         public static double GetSimilarity(string image, Bitmap targetImage, string filepath)
         {
@@ -59,17 +21,21 @@ namespace DB.FreeFoosballInspector
 
             var imageTwo = targetImage;
 
-            var newBitmap1 = ChangePixelFormat(new Bitmap(imageOne), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            var newBitmap2 = ChangePixelFormat(new Bitmap(imageTwo), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            var overlayImage = ChangePixelFormat(new Bitmap(imageOne), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            var template = ChangePixelFormat(new Bitmap(imageOne), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            var templFile = ChangePixelFormat(new Bitmap(imageTwo), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
-            newBitmap1 = SaveBitmapToFile(newBitmap1, filepath, image, BitMapExtension);
-            newBitmap2 = SaveBitmapToFile(newBitmap2, filepath, "C:\\temp\\temp.bmp", BitMapExtension);
+            var df = new ThresholdedDifference(90) {OverlayImage = overlayImage};
+
+            var savedTemplate = SaveBitmapToFile(df.Apply(template), filepath, image, BitMapExtension);
+            var savedTempFile = SaveBitmapToFile(df.Apply(templFile), filepath, "C:\\temp\\temp"+ (_overrideTempFile?i.ToString():"")+ ".bmp", BitMapExtension);
+            i++;
 
             // Setup the AForge library
             var tm = new ExhaustiveTemplateMatching(0);
 
             // Process the images
-            var results = tm.ProcessImage(newBitmap1, newBitmap2);
+            var results = tm.ProcessImage(savedTemplate, savedTempFile);
 
             // Compare the results, 0 indicates no match so return false
             if (results.Length <= 0)
@@ -105,9 +71,17 @@ namespace DB.FreeFoosballInspector
         /// <returns>Bitmap image</returns>
         private static Bitmap ChangePixelFormat(Bitmap inputImage, System.Drawing.Imaging.PixelFormat newFormat)
         {
-            HistogramEqualization filter = new HistogramEqualization();
+            var img = inputImage.Clone(new Rectangle(0, 0, inputImage.Width, inputImage.Height), inputImage.PixelFormat);
+            HistogramEqualization histogramEqualization = new HistogramEqualization();
+            Mean smoothing = new Mean();
+            
+            histogramEqualization.ApplyInPlace(img);
 
-            return filter.Apply(inputImage.Clone(new Rectangle(0, 0, inputImage.Width, inputImage.Height), newFormat));
+            smoothing.ApplyInPlace(img);
+
+            img = img.Clone(new Rectangle(0, 0, inputImage.Width, inputImage.Height), newFormat);
+
+            return img;
         }
     }
 
