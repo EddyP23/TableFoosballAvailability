@@ -61,7 +61,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry, it is not your time to leave your work..
+        ///   Looks up a localized string similar to Soriukas.
         /// </summary>
         internal static string Bad {
             get {
@@ -82,6 +82,16 @@ namespace FreeFoosball.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon foosball_available2 {
+            get {
+                object obj = ResourceManager.GetObject("foosball_available2", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon foosball_busy {
             get {
                 object obj = ResourceManager.GetObject("foosball_busy", resourceCulture);
@@ -90,7 +100,17 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quickly run!!! It is your chance now!.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon foosball_busy2 {
+            get {
+                object obj = ResourceManager.GetObject("foosball_busy2", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greit varyk!!!.
         /// </summary>
         internal static string Good {
             get {

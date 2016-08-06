@@ -133,12 +133,15 @@
     <Resource Include="Assets\foosball_available.ico" />
     <Resource Include="Assets\foosball_busy.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApplication1\DB.FreeFoosballInspector\DB.FreeFoosballInspector.csproj">
       <Project>{aabf280f-50b2-497b-9c8f-4c26b546e224}</Project>
       <Name>DB.FreeFoosballInspector</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\foosball_available2.ico" />
+    <Resource Include="Assets\foosball_busy2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

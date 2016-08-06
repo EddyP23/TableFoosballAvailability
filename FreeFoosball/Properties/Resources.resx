@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Bad" xml:space="preserve">
-    <value>Sorry, it is not your time to leave your work.</value>
+    <value>Soriukas</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="foosball_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -128,6 +128,12 @@
     <value>..\Assets\foosball_busy.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>Quickly run!!! It is your chance now!</value>
+    <value>Greit varyk!!!</value>
+  </data>
+  <data name="foosball_available2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\foosball_available2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="foosball_busy2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\foosball_busy2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

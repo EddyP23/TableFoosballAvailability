@@ -13,7 +13,7 @@ namespace FreeFoosball.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private string _text = Resources.Bad;
-        private ImageSource _imageSource = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
+        private ImageSource _imageSource = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy2.ico"));
 
         public MainWindowViewModel(IFreeFoosballInspectionManager inspectionManager)
         {
@@ -57,12 +57,12 @@ namespace FreeFoosball.ViewModels
              
             if (isFree)
             {
-                image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_available.ico"));
+                image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_available2.ico"));
                 text = Resources.Good;
             }
             else
             {
-                image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
+                image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy2.ico"));
                 text = Resources.Bad;
             }
 
