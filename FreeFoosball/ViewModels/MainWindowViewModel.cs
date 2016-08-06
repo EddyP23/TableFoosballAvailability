@@ -6,7 +6,7 @@ using DB.FreeFoosballInspector;
 using FreeFoosball.Commands;
 using Prism.Mvvm;
 using System.Windows.Threading;
-using FreeFoosball.Assets;
+using FreeFoosball.Properties;
 
 namespace FreeFoosball.ViewModels
 {
@@ -14,36 +14,10 @@ namespace FreeFoosball.ViewModels
     {
         private string _text = Resources.Bad;
         private ImageSource _imageSource = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
-        private readonly FreeFoosballInspector<ExhaustiveTemplateMatchingInspector> _inspector = new FreeFoosballInspector<ExhaustiveTemplateMatchingInspector>();
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IFreeFoosballInspectionManager inspectionManager)
         {
-            _inspector.TableStatusChangedEvent += (sender, eventArgs) =>
-            {
-                if (((TableStatusChangedEventArgs)eventArgs).IsFree)
-                {
-                    var bi = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_available.ico"));
-                    bi.Freeze();
-
-                    Dispatcher.CurrentDispatcher.Invoke(() =>
-                    {
-                        Text = Resources.Good;
-                        IconSource = bi;
-                    });
-                }
-                else
-                {
-                    var bi = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
-                    bi.Freeze();
-
-                    Dispatcher.CurrentDispatcher.Invoke(() =>
-                    {
-                        Text = Resources.Bad;
-                        IconSource = bi;
-                    });
-                }
-            };
-            _inspector.Start();
+            inspectionManager.Configure(OnInspectionAction).StartInspection();
         }
 
         public ImageSource IconSource
@@ -57,7 +31,6 @@ namespace FreeFoosball.ViewModels
                 _imageSource = value;
                 OnPropertyChanged();
             }
-
         }
 
         public string Text
@@ -76,5 +49,30 @@ namespace FreeFoosball.ViewModels
         public Action CloseAction { get; set; }
 
         public ICommand CloseCommandProperty => new CloseCommand(CloseAction);
+
+        private void OnInspectionAction(bool isFree)
+        {
+            BitmapImage image;
+            string text;
+             
+            if (isFree)
+            {
+                image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_available.ico"));
+                text = Resources.Good;
+            }
+            else
+            {
+                image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy.ico"));
+                text = Resources.Bad;
+            }
+
+            image.Freeze();
+
+            Dispatcher.CurrentDispatcher.Invoke(() =>
+            {
+                Text = text;
+                IconSource = image;
+            });
+        }
     }
 }

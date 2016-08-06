@@ -59,5 +59,43 @@ namespace FreeFoosball.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, it is not your time to leave your work..
+        /// </summary>
+        internal static string Bad {
+            get {
+                return ResourceManager.GetString("Bad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon foosball_available {
+            get {
+                object obj = ResourceManager.GetObject("foosball_available", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon foosball_busy {
+            get {
+                object obj = ResourceManager.GetObject("foosball_busy", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quickly run!!! It is your chance now!.
+        /// </summary>
+        internal static string Good {
+            get {
+                return ResourceManager.GetString("Good", resourceCulture);
+            }
+        }
     }
 }

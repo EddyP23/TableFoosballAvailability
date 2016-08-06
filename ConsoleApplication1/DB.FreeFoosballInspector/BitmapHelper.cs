@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using System.Net;
-using AForge.Imaging.Filters;
 
 namespace DB.FreeFoosballInspector
 {
@@ -19,16 +18,9 @@ namespace DB.FreeFoosballInspector
             }
         }
 
-        public static Bitmap Crop(this Bitmap bmp, Rectangle cropRectangle)
+        public static Bitmap Crop(this Bitmap img, Rectangle cropArea)
         {
-            Crop filter = new Crop(cropRectangle);
-
-            return filter.Apply(bmp);
-        }
-
-        public static Bitmap CropImage(Bitmap img, Rectangle cropArea)
-        {
-            Bitmap bmpImage = new Bitmap(img);
+            var bmpImage = new Bitmap(img);
             return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
         }
 

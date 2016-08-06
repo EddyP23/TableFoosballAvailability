@@ -23,5 +23,10 @@ namespace FreeFoosball.Commands
         {
             _onExecute?.Invoke();
         }
+
+        protected virtual void OnCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

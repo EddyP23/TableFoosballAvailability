@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using DB.FreeFoosballInspector;
 using FreeFoosball.ViewModels;
 using Microsoft.Practices.Unity;
 
@@ -13,6 +14,7 @@ namespace FreeFoosball
         {
             var container = new UnityContainer();
 
+            container.RegisterType<IFreeFoosballInspectionManager, FreeFoosballInspectionManager<ExhaustiveTemplateMatchingInspector>>();
             container.RegisterType<MainWindowViewModel>();
 
             container.Resolve<MainWindow>().ShowDialog();

@@ -55,12 +55,12 @@
   <ItemGroup>
     <Compile Include="BitmapHelper.cs" />
     <Compile Include="ExhaustiveTemplateMatchingInspector.cs" />
-    <Compile Include="FreeFoosballInspector.cs" />
+    <Compile Include="FreeFoosballInspectionManager.cs" />
     <Compile Include="IFreeFoosballInspector.cs" />
+    <Compile Include="IFreeFoosballInspectionManager.cs" />
     <Compile Include="ImageCompare.cs" />
     <Compile Include="ImageRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableStatusChangedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
