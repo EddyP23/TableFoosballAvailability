@@ -128,7 +128,7 @@
     <value>..\Assets\foosball_busy.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>Greit varyk!!!</value>
+    <value>Staigiai bek apacion!</value>
   </data>
   <data name="foosball_available2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\foosball_available2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -138,5 +138,14 @@
   </data>
   <data name="foosball" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\foosball.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BestApplication" xml:space="preserve">
+    <value>The best free foosball notification application</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>Sekasi</value>
+  </data>
+  <data name="Busy" xml:space="preserve">
+    <value>Nesiseka</value>
   </data>
 </root>

@@ -61,11 +61,38 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sekasi.
+        /// </summary>
+        internal static string Available {
+            get {
+                return ResourceManager.GetString("Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Soriukas.
         /// </summary>
         internal static string Bad {
             get {
                 return ResourceManager.GetString("Bad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The best free foosball notification application.
+        /// </summary>
+        internal static string BestApplication {
+            get {
+                return ResourceManager.GetString("BestApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nesiseka.
+        /// </summary>
+        internal static string Busy {
+            get {
+                return ResourceManager.GetString("Busy", resourceCulture);
             }
         }
         
@@ -120,7 +147,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greit varyk!!!.
+        ///   Looks up a localized string similar to Staigiai bek apacion!.
         /// </summary>
         internal static string Good {
             get {

@@ -46,7 +46,11 @@ namespace FreeFoosball.ViewModels
             }
         }
 
+        public string Title => Resources.BestApplication;
+
         public Action CloseAction { get; set; }
+
+        public Action<bool> NotificationAction { get; set; }
 
         public ICommand CloseCommandProperty => new CloseCommand(CloseAction);
 
@@ -58,12 +62,12 @@ namespace FreeFoosball.ViewModels
             if (isFree)
             {
                 image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_available2.ico"));
-                text = Resources.Good;
+                text = Resources.Available;
             }
             else
             {
                 image = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy2.ico"));
-                text = Resources.Bad;
+                text = Resources.Busy;
             }
 
             image.Freeze();
@@ -73,6 +77,8 @@ namespace FreeFoosball.ViewModels
                 Text = text;
                 IconSource = image;
             });
+
+            NotificationAction?.Invoke(!isFree);
         }
     }
 }
