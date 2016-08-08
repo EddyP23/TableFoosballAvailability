@@ -7,7 +7,7 @@ namespace DB.FreeFoosballInspector
     {
         public static Bitmap FromUrl(string url)
         {
-            var request = WebRequest.CreateHttp("http://10.32.244.12/record/current.jpg?rand=272954");
+            var request = WebRequest.CreateHttp(url);
             
             request.UserAgent =
                 "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
