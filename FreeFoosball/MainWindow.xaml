@@ -3,18 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
         xmlns:tb="http://www.hardcodet.net/taskbar"
-        Title="{Binding Title}" Height="350" Width="525"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Height="350" Width="525"
         Visibility="Hidden">
-
-    <Grid>
+    <Grid x:Name="Root">
         <tb:TaskbarIcon
-            IconSource="pack://application:,,,/Assets/foosball.ico"
-            ToolTipText="Blet!!!">
+            x:Name="TaskBarIconControl"
+            IconSource="{Binding IconSource, Mode=OneWay}"
+            ToolTipText="{Binding Text, Mode=OneWay}">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Exit" Command="{Binding CloseCommand}" />
+                    <MenuItem Header="Exit" Command="{Binding CloseCommandProperty, Mode=OneWay}" />
                 </ContextMenu>
             </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>

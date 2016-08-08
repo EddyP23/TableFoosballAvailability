@@ -65,17 +65,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\template.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\test1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\test2.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DB.FreeFoosballInspector\DB.FreeFoosballInspector.csproj">
       <Project>{aabf280f-50b2-497b-9c8f-4c26b546e224}</Project>
       <Name>DB.FreeFoosballInspector</Name>

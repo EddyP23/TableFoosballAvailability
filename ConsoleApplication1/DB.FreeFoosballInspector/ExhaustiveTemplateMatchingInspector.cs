@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 namespace DB.FreeFoosballInspector
 {
-    public class ExhaustiveTemplateMatchingInspector: IFreeFoosballInspector
+    public class ExhaustiveTemplateMatchingInspector : IFreeFoosballInspector
     {
-        private bool _isPreviousFree = false;
         private const double SimilarityThreshold = 0.80;
+        private static readonly string TemplateFile = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
+        private static readonly Rectangle CropRctangle = new Rectangle(725, 497, 117, 81);
+
+        private bool _isPreviousFree;
         private double _lastSimilarity;
-        private bool _isInitialEventSent = false;
-        private Bitmap _image = null;
-        
+        private bool _isInitialEventSent;
+        private Bitmap _image;
+
         public ExhaustiveTemplateMatchingInspector()
         {
             var imageRetriever = new ImageRetriever();
@@ -54,13 +58,10 @@ namespace DB.FreeFoosballInspector
         
         private double GetSimilarity()
         {
-            string template = AppDomain.CurrentDomain.BaseDirectory + "/Images/template.jpg";
+            var dirPath = Path.GetTempPath();
+            var im2 = _image.Crop(CropRctangle);
 
-            var dirPath = "C:\\temp";
-
-            var im2 = BitmapHelper.CropImage(_image, new Rectangle(725, 497, 117, 81));
-
-            var similarity = ImageComparer.GetSimilarity(template, im2, dirPath);
+            var similarity = ImageComparer.GetSimilarity(TemplateFile, im2, dirPath);
             Console.WriteLine(similarity);
             return similarity;
         }
