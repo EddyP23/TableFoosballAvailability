@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -48,11 +49,9 @@ namespace FreeFoosball.ViewModels
 
         public string Title => Resources.BestApplication;
 
-        public Action CloseAction { get; set; }
-
         public Action<bool> NotificationAction { get; set; }
 
-        public ICommand CloseCommandProperty => new CloseCommand(CloseAction);
+        public ICommand CloseCommandProperty => new CloseCommand(Application.Current.MainWindow.Close);
 
         private void OnInspectionAction(bool isFree)
         {
