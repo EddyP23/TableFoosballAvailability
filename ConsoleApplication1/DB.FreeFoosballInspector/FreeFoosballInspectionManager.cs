@@ -30,6 +30,7 @@ namespace DB.FreeFoosballInspector
                 {
                     _inspectionAction?.Invoke(true);
                 }
+                else
                 if (_foosballInspector.HasChangedToOccupied())
                 {
                     _inspectionAction?.Invoke(false);
