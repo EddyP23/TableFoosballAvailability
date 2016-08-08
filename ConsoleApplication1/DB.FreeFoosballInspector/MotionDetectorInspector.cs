@@ -11,13 +11,14 @@ namespace DB.FreeFoosballInspector
         private bool _isPreviousFree = false;
         private const double MotionPercentageThreshold = 0.001;
         private double _lastMotionPercentage;
-        private bool _isInitialEventSent = false;
         private Bitmap _image = null;
         private readonly MotionDetector _motionDetector;
-        readonly BlobCountingObjectsProcessing _objectsProcessing;
+        private readonly BlobCountingObjectsProcessing _objectsProcessing;
+        private bool _isInitialEventSent = false;
 
-        private int CounterToPublishEvent = 10;
-        private int _sameStatusCount = 0;
+        private const int CounterToPublishEvent = 5;
+        private int _freeInARow = 0;
+        private int _occupiedInARow = 0;
 
         public MotionDetectingInspector()
         {
@@ -41,15 +42,19 @@ namespace DB.FreeFoosballInspector
         {
             if (IsFree())
             {
-                _sameStatusCount++;
-                if ((!_isPreviousFree || !_isInitialEventSent) && _image != null)
+                _occupiedInARow = 0;
+                if (_image != null)
                 {
-                    if (_sameStatusCount < CounterToPublishEvent)
-                        return false;
-                    _isInitialEventSent = true;
-                    _isPreviousFree = true;
-                    _sameStatusCount = 0;
-                    return true;
+                    if (_freeInARow >= CounterToPublishEvent)
+                    {
+                        if (!_isPreviousFree || !_isInitialEventSent)
+                        {
+                            _isPreviousFree = true;
+                            _isInitialEventSent = true;
+                            return true;
+                        }
+                    }
+                    return false;
                 }
             }
             return false;
@@ -59,15 +64,19 @@ namespace DB.FreeFoosballInspector
         {
             if (!IsFree())
             {
-                _sameStatusCount++;
-                if ((_isPreviousFree || !_isInitialEventSent) && _image != null)
+                _freeInARow = 0;
+                if (_image != null)
                 {
-                    if (_sameStatusCount < CounterToPublishEvent)
-                        return false;
-                    _isInitialEventSent = true;
-                    _isPreviousFree = false;
-                    _sameStatusCount = 0;
-                    return true;
+                    if (_occupiedInARow >= CounterToPublishEvent)
+                    {
+                        if (_isPreviousFree || !_isInitialEventSent)
+                        {
+                            _isPreviousFree = false;
+                            _isInitialEventSent = true;
+                            return true;
+                        }
+                    }
+                    return false;
                 }
             }
             return false;
@@ -75,13 +84,32 @@ namespace DB.FreeFoosballInspector
 
         private bool IsFree()
         {
-            return _lastMotionPercentage < MotionPercentageThreshold;
+            return _lastMotionPercentage <= MotionPercentageThreshold;
         }
-
+        //int _i = 0;
         private void OnImageRetrieved(object sender, EventArgs args)
         {
+            //var fakeProcessorResults = new int[]
+            //{0, 0, 0, 0, 0, 0, 3,3,3,3,3,3,3,2,2,0,1,1,0,1,1,0,0,0,1};
+
+            if (IsFree())
+            {
+                _freeInARow++;
+            }
+            if(!IsFree())
+            {
+                _occupiedInARow++;
+            }
+            Console.WriteLine($"f {_freeInARow} o {_occupiedInARow}");
+            
             _image = ((ImageRetrievedEventArgs)args).Image;
             _image = _image.Crop(new Rectangle(725, 497, 117, 81));
+
+            //_lastMotionPercentage = fakeProcessorResults[_i];
+            //_i++;
+            //if (_i > fakeProcessorResults.Length-1)
+            //    _i = 0;
+
             _lastMotionPercentage = _motionDetector.ProcessFrame(new Bitmap(_image).LockBits(new Rectangle(0, 0, _image.Width, _image.Height),
                 ImageLockMode.ReadWrite, _image.PixelFormat));
             if (_objectsProcessing.ObjectsCount > 0)
