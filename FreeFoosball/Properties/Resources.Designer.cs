@@ -72,6 +72,16 @@ namespace FreeFoosball.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon foosball {
+            get {
+                object obj = ResourceManager.GetObject("foosball", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon foosball_available {
             get {
                 object obj = ResourceManager.GetObject("foosball_available", resourceCulture);
