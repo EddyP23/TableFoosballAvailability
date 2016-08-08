@@ -12,7 +12,7 @@ namespace FreeFoosball.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _text = Resources.Bad;
+        private string _text = Resources.Busy;
         private ImageSource _imageSource = new BitmapImage(new Uri("pack://application:,,,/FreeFoosball;component/Assets/foosball_busy2.ico"));
 
         public MainWindowViewModel(IFreeFoosballInspectionManager inspectionManager)
