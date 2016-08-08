@@ -16,6 +16,9 @@ namespace DB.FreeFoosballInspector
         private readonly MotionDetector _motionDetector;
         readonly BlobCountingObjectsProcessing _objectsProcessing;
 
+        private int CounterToPublishEvent = 10;
+        private int _sameStatusCount = 0;
+
         public MotionDetectingInspector()
         {
             _objectsProcessing = new BlobCountingObjectsProcessing()
@@ -36,23 +39,36 @@ namespace DB.FreeFoosballInspector
 
         public bool HasChangedToFree()
         {
-            if (IsFree() && (!_isPreviousFree || !_isInitialEventSent) && _image != null)
+            if (IsFree())
             {
-                _isInitialEventSent = true;
-                _isPreviousFree = true;
-                return true;
+                _sameStatusCount++;
+                if ((!_isPreviousFree || !_isInitialEventSent) && _image != null)
+                {
+                    if (_sameStatusCount < CounterToPublishEvent)
+                        return false;
+                    _isInitialEventSent = true;
+                    _isPreviousFree = true;
+                    _sameStatusCount = 0;
+                    return true;
+                }
             }
             return false;
         }
 
         public bool HasChangedToOccupied()
         {
-            if (!IsFree() && (_isPreviousFree || !_isInitialEventSent) && _image != null)
+            if (!IsFree())
             {
-                _isInitialEventSent = true;
-
-                _isPreviousFree = false;
-                return true;
+                _sameStatusCount++;
+                if ((_isPreviousFree || !_isInitialEventSent) && _image != null)
+                {
+                    if (_sameStatusCount < CounterToPublishEvent)
+                        return false;
+                    _isInitialEventSent = true;
+                    _isPreviousFree = false;
+                    _sameStatusCount = 0;
+                    return true;
+                }
             }
             return false;
         }
@@ -76,9 +92,7 @@ namespace DB.FreeFoosballInspector
                     {
                         g.DrawRectangles(p, _objectsProcessing.ObjectRectangles);
                     }
-                };
-
-
+                }
             }
 
             new Bitmap(_image).Save(Path.Combine(Path.GetTempPath(), "temp.bmp"));
