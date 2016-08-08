@@ -9,7 +9,7 @@ namespace DB.FreeFoosballInspector
     public class MotionDetectingInspector : IFreeFoosballInspector
     {
         private bool _isPreviousFree = false;
-        private const double MotionPercentageThreshold = 0.005;
+        private const double MotionPercentageThreshold = 0.001;
         private double _lastMotionPercentage;
         private bool _isInitialEventSent = false;
         private Bitmap _image = null;
