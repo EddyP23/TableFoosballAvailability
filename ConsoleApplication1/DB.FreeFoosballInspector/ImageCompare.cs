@@ -25,7 +25,7 @@ namespace DB.FreeFoosballInspector
             var template = ChangePixelFormat(new Bitmap(imageOne), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             var templFile = ChangePixelFormat(new Bitmap(imageTwo), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
-            var df = new ThresholdedDifference(90) {OverlayImage = overlayImage};
+            var df = new ThresholdedDifference(80) {OverlayImage = overlayImage};
 
             var savedTemplate = SaveBitmapToFile(df.Apply(template), filepath, image, BitMapExtension);
             var savedTempFile = SaveBitmapToFile(df.Apply(templFile), filepath, "C:\\temp\\temp"+ (_overrideTempFile?i.ToString():"")+ ".bmp", BitMapExtension);
