@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using AForge.Vision.Motion;
 
 namespace DB.FreeFoosballInspector
@@ -13,7 +14,7 @@ namespace DB.FreeFoosballInspector
         private bool _isInitialEventSent = false;
         private Bitmap _image = null;
         private readonly MotionDetector _motionDetector;
-        BlobCountingObjectsProcessing _objectsProcessing;
+        readonly BlobCountingObjectsProcessing _objectsProcessing;
 
         public MotionDetectingInspector()
         {
@@ -64,7 +65,7 @@ namespace DB.FreeFoosballInspector
         private void OnImageRetrieved(object sender, EventArgs args)
         {
             _image = ((ImageRetrievedEventArgs)args).Image;
-            _image = BitmapHelper.CropImage(_image, new Rectangle(725, 497, 117, 81));
+            _image = _image.Crop(new Rectangle(725, 497, 117, 81));
             _lastMotionPercentage = _motionDetector.ProcessFrame(new Bitmap(_image).LockBits(new Rectangle(0, 0, _image.Width, _image.Height),
                 ImageLockMode.ReadWrite, _image.PixelFormat));
             if (_objectsProcessing.ObjectsCount > 0)
@@ -80,7 +81,7 @@ namespace DB.FreeFoosballInspector
 
             }
 
-            new Bitmap(_image).Save("C:\\temp\\temp.bmp");
+            new Bitmap(_image).Save(Path.Combine(Path.GetTempPath(), "temp.bmp"));
 
             Console.WriteLine(_lastMotionPercentage);
         }
