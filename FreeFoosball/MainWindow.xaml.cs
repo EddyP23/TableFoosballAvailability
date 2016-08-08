@@ -1,4 +1,5 @@
 ﻿using FreeFoosball.ViewModels;
+using Hardcodet.Wpf.TaskbarNotification;
 using Resource = FreeFoosball.Properties.Resources;
 
 namespace FreeFoosball
@@ -20,7 +21,7 @@ namespace FreeFoosball
         private void ShowNotificationBallooon(bool bad)
         {
             TaskBarIconControl.ShowBalloonTip(
-                Resource.BestApplication, bad ? Resource.Bad : Resource.Good, Resource.foosball);
+                Resource.BestApplication, bad ? Resource.Bad : Resource.Good, BalloonIcon.Info);
         }
     }
 }
