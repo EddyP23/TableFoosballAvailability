@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
 using FreeFoosball.ViewModels;
 using Hardcodet.Wpf.TaskbarNotification;
 using Resource = FreeFoosball.Properties.Resources;
@@ -20,6 +21,7 @@ namespace FreeFoosball
             viewModel.NotificationAction = ShowNotificationBallooon;
             DataContext = viewModel;
         }
+
 
         private void ShowNotificationBallooon(bool bad)
         {
