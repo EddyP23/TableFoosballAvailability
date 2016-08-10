@@ -54,6 +54,8 @@ namespace FreeFoosball.ViewModels
 
         public ICommand CloseCommandProperty => new CloseCommand(CloseAction);
 
+        public ICommand OpenCameraCommandProperty => new OpenCameraCommand();
+
         private void OnInspectionAction(bool isFree)
         {
             BitmapImage image;
@@ -77,7 +79,7 @@ namespace FreeFoosball.ViewModels
                 Text = text;
                 IconSource = image;
             });
-
+            
             NotificationAction?.Invoke(!isFree);
         }
     }

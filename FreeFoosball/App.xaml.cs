@@ -14,7 +14,7 @@ namespace FreeFoosball
         {
             var container = new UnityContainer();
 
-            container.RegisterType<IFreeFoosballInspectionManager, FreeFoosballInspectionManager<ExhaustiveTemplateMatchingInspector>>();
+            container.RegisterType<IFreeFoosballInspectionManager, FreeFoosballInspectionManager<MotionDetectingInspector>>();
             container.RegisterType<MainWindowViewModel>();
 
             container.Resolve<MainWindow>().ShowDialog();
