@@ -61,7 +61,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sekasi.
+        ///   Looks up a localized string similar to Table is available.
         /// </summary>
         internal static string Available {
             get {
@@ -70,7 +70,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Soriukas.
+        ///   Looks up a localized string similar to Table is taken.
         /// </summary>
         internal static string Bad {
             get {
@@ -79,7 +79,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The best free foosball notification application.
+        ///   Looks up a localized string similar to DGITL UNIQ Foosball Table Watcher.
         /// </summary>
         internal static string BestApplication {
             get {
@@ -88,7 +88,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nesiseka.
+        ///   Looks up a localized string similar to Don&apos;t worry, You will get notified when it&apos;s available!.
         /// </summary>
         internal static string Busy {
             get {
@@ -147,7 +147,7 @@ namespace FreeFoosball.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Staigiai bek apacion!.
+        ///   Looks up a localized string similar to Run, Forest, Run!.
         /// </summary>
         internal static string Good {
             get {

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Bad" xml:space="preserve">
-    <value>Soriukas</value>
+    <value>Table is taken</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="foosball_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -128,7 +128,7 @@
     <value>..\Assets\foosball_busy.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Good" xml:space="preserve">
-    <value>Staigiai bek apacion!</value>
+    <value>Run, Forest, Run!</value>
   </data>
   <data name="foosball_available2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\foosball_available2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -140,12 +140,12 @@
     <value>..\Assets\foosball.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BestApplication" xml:space="preserve">
-    <value>The best free foosball notification application</value>
+    <value>DGITL UNIQ Foosball Table Watcher</value>
   </data>
   <data name="Available" xml:space="preserve">
-    <value>Sekasi</value>
+    <value>Table is available</value>
   </data>
   <data name="Busy" xml:space="preserve">
-    <value>Nesiseka</value>
+    <value>Don't worry, You will get notified when it's available!</value>
   </data>
 </root>
